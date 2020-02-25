@@ -1,4 +1,4 @@
-// import the required libraries
+# import the required libraries
 import numpy as np 
 import matplotlip.pyplot as plt
 import pandas an pd
