@@ -17,3 +17,19 @@ model = tf.global_variables_initializer()
 with tf.Session() as session:
 	session.run(model)
 	print(session.run(y)) #40,45,50
+
+#updating varibales within a session using for loop
+w = tf.Variable(0,name="w")
+model=tf.global_variables_initializer()
+with tf.Session() as sess:
+    sess.run(model)
+    for i in range(5):
+        w=w+5
+        print(sess.run(x))
+        
+        #gives
+ [85 90 95]
+[85 90 95]
+[85 90 95]
+[85 90 95]
+[85 90 95]
