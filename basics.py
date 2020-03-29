@@ -33,3 +33,18 @@ with tf.Session() as sess:
 [85 90 95]
 [85 90 95]
 [85 90 95]
+
+#graph visualization with tensorboard
+x = tf.constant(35, name='x')
+print(x)
+y = tf.Variable(x + 5, name='y')
+
+with tf.Session() as session:
+    merged = tf.summary.merge_all()
+    writer = tf.summary.FileWriter("/tmp/basic", session.graph)
+    model =  tf.global_variables_initializer()
+    session.run(model)
+    print(session.run(y)) #
+    #gives
+Tensor("x_4:0", shape=(), dtype=int32)
+40
