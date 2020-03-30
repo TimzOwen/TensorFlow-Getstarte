@@ -19,5 +19,9 @@ Now as the condtions increase we have to factor in all the condition giving us t
 
 y = a + bX1 + b1X1 + b3X3........
 
+# image manipulations using tensorflow's transpose
 
+![manipulated](https://user-images.githubusercontent.com/34624703/77966129-1c8b6580-72eb-11ea-9e44-2eefd313dd30.PNG)
+
+Transposed image using Tensorflow Transpose parameters
 
