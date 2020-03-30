@@ -69,3 +69,22 @@ plt.imshow(image)
 plt.show()  # plots the image
 
 #upnext is Geometric manipulation of the image
+#Transformation  of the image 90 degrees
+import tensorflow as tf
+import  matplotlib.image as mpimg
+import matplotlib.pyplot as plt
+import os
+dir_path = os.path.dirname(os.path.realpath(_file_))
+filename=dir_path + "/filename.png
+image=mpimg.imread(filename)
+
+x=tf.Variable(image, name='x')
+model=tf.global_variables_initializer()
+
+with tf.Session() as sess:
+    x=tf.transpose(x, perm=[1,0,2])
+    sess.run(model)
+    output=sess.run(x)
+    
+plt.imshow(image)
+plt.show()  # output on readme.ME transpose
