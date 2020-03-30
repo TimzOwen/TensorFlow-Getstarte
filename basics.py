@@ -48,3 +48,24 @@ with tf.Session() as session:
     #gives
 Tensor("x_4:0", shape=(), dtype=int32)
 40
+
+#Loading images 
+#install matplotlib pillow
+import  matplotlib.image as mpimg
+import os
+#load image from your directory
+#rem to download an image 
+dir_path = os.path.dirname(os.path.realpath(_file_))
+#give the file name
+filename=dir_path + "/filename.png"
+#load
+image=mpimg.imread(filename)
+#print out this shape
+print(image.shape) # gives height ,width in pixels and the depth of color of the picture
+
+#plot the image
+import matplotlib.pyplot as plt
+plt.imshow(image)
+plt.show()  # plots the image
+
+#upnext is Geometric manipulation of the image
