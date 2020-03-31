@@ -124,3 +124,29 @@ y=x*3
 with tf.Session() as sess:
     result = sess.run(y, feed_dict={[2,3,4]})
     print(result)
+
+#multidimensional arrays with feed_dict
+x=tf.placeholder("float", None)
+y=x*4
+with tf.Session() as sess:
+    x_data = [[2,4,6,],
+             [8,10,12]]
+    result = sess.run(y, feed_dict={x: x_data})
+    print(result)
+
+#image slicing using placeholders and pixels
+#from the pic on readme,we slice the image into 2D and 3 colors (red green and blue)
+# First, load the image again
+dir_path = os.path.dirname(os.path.realpath(__file__))
+filename = dir_path + "/MarshOrchid.jpg"
+raw_image_data = mpimg.imread(filename)
+
+image = tf.placeholder("uint8", [None, None, 3])
+slice = tf.slice(image, [1000, 0, 0], [3000, -1, -1])
+
+with tf.Session() as session:
+    result = session.run(slice, feed_dict={image: raw_image_data})
+    print(result.shape)
+
+plt.imshow(result)
+plt.show()
