@@ -150,3 +150,14 @@ with tf.Session() as session:
 
 plt.imshow(result)
 plt.show()
+
+
+# Upnext Interactive Sessions
+#Interactive 
+# allows use of variables without object Sessions()
+#rem to always close the sessions
+sess = tf.InteractiveSession()
+x =  tf.constant(list(range(15)))
+print(x)
+sess.close() # 0-14
+
