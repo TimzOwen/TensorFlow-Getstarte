@@ -25,3 +25,7 @@ y = a + bX1 + b1X1 + b3X3........
 
 Transposed image using Tensorflow Transpose parameters
 
+![tensorboard](https://user-images.githubusercontent.com/34624703/78081290-e0263b00-73b8-11ea-9ad8-cc0b9bcc5cfc.JPG)
+
+Tensorboards symbols and meaning 
+
