@@ -114,3 +114,13 @@ with tf.Session() as session:
 print(result.shape)
 plt.imshow(result)
 plt.show()
+
+#Placeholders
+#This are variables to which we shall assign data to it later
+#this allows us to build graphs without having to place the data first but later use feed_data to assign data 
+import tensorflow as tf
+x=tf.placeholder("float", None)
+y=x*3
+with tf.Session() as sess:
+    result = sess.run(y, feed_dict={[2,3,4]})
+    print(result)
