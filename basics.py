@@ -161,3 +161,16 @@ x =  tf.constant(list(range(15)))
 print(x)
 sess.close() # 0-14
 
+# Large matrix example
+#first find out size of memory being used
+import resource
+import numpy as np
+print("{} Kb".format(resource.getrusage(resource.RUSAGE_SELF).ru_maxrss))
+#create new session and define two matrices
+session = tf.InteractiveSession()
+x = tf.constant(np.eye(10000))
+y = tf.constant(np.random.randn(10000, 300))
+z= tf.matmult(x,y)
+z.eval()
+#print resource but be sure your computer is powerful otherwise don't run (4gb Ram +)
+
