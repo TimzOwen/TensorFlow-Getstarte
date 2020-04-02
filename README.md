@@ -29,3 +29,7 @@ Transposed image using Tensorflow Transpose parameters
 
 Tensorboards symbols and meaning 
 
+# scope and naming 
+![scope](https://user-images.githubusercontent.com/34624703/78213835-6f684700-74bc-11ea-94f1-277bc57b5108.JPG)
+
+
