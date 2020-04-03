@@ -32,4 +32,7 @@ Tensorboards symbols and meaning
 # scope and naming 
 ![scope](https://user-images.githubusercontent.com/34624703/78213835-6f684700-74bc-11ea-94f1-277bc57b5108.JPG)
 
+# perfoming manipulations on 3D objects with Tf
+
+![rotation3d](https://user-images.githubusercontent.com/34624703/78398799-62eb0800-75fc-11ea-9b27-8d2fd79b7155.JPG)
 
