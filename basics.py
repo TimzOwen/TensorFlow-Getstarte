@@ -174,3 +174,4 @@ z= tf.matmult(x,y)
 z.eval()
 #print resource but be sure your computer is powerful otherwise don't run (4gb Ram +)
 
+#upnext Tensorfow in 3D
