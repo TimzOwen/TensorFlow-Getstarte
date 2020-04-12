@@ -41,3 +41,6 @@ print("y: ", sess.run(y))
 
 print("sum (x): ", sess.run(sum_x))
 print("product (y): ", sess.run(product_y))
+
+print("final_div", sess.run(final_div))
+print("final_mean: " , sess.run(final_mean))
