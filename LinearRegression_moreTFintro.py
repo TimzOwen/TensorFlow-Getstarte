@@ -53,3 +53,34 @@ with tf.Session() as sess:
     sess.run(init)
 
     print("final Result of W*x+b: ", sess.run(y,feed_dict={x:[10,100]})) #gives [30,410]
+    
+#initialize new values you only need them
+# s = Wx
+s = W * x
+
+init = tf.variables_initializer([W])
+
+with tf.Session as sess:
+    sess.run(init) #running the prev ops will cast an error of 'b' not initialzed var Wx+b
+    print("this now working: Wx + b", sess.run(y,feed_dict={x:[10,200]}))
+    
+    #now uncomment the above and run this with 's' as the only initialized var
+    print("result: s", sess.run(s, feed_dict={[2,8]})) #gives [5,32]
+
+#now use and update variables
+number = tf.Variable(6)
+multiplier = tf.Variable(2)
+
+
+#initialize
+init = tf.global_variable_initializer()
+
+#reassign with new values and calculate in for loop 
+result = number.assign(tf.multiply(number,multiplier))
+
+with tf.Session() as sess:
+    sess.run(init)
+    for i in range(10):
+        print("result number * multiplier = : ", sess.run(result))
+        #increment value by one in each iteration
+        print("increament multiplier, new value: ", sess.run(multiplier.assign_add(1)))
