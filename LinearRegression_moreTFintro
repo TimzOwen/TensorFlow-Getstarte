@@ -1,0 +1,35 @@
+#Linear Regression.
+ #Regression is an example of a learning algorithm 
+ #involves finding th best line of fit. 
+ #check the docs on README.md
+
+#Diggin dipper to more fundamentals
+#placeholders: 
+#place holders holds space/place where a tensor will be fed with data at runtime
+#place holders can hold tensors of any shape
+#let's perform some math operation with placeholders and feed_dictionaries 
+import tensorflow as tf
+
+#y=Wx+b
+w = tf.constant([10,100], name='constant_w')
+
+#create the placeholder
+x=tf.constant(tf.int32, name="x")
+b=tf.constant(tf.int32, name='b')
+
+Wx=tf.multiply(Wx, name="Wx")
+y=tf.add(Wx,b, name='y')
+y_=tf.subtract(x,b,name='y_')
+
+#print out the results and instantiate the sessions
+with tf.Session() as sess:
+    print("Wx result is: ", sess.run(Wx, feed_dict={x:[10,22]}))
+    print("addition Wx+b: ", sess.run(y, feed_dict={x:[2,6], b:[12,6]}))
+    #you can also use intermediate values 
+    print("Wx+b:", sess.run(fetches=y,feed_dict={Wx:[100,1000], b:[7,8]})) #gives [107,1008]
+    #multiple session with one node
+    print("two results: [Wx+b] [x-b]",sess.run(fetches=[y,y_], feed_dict={x:[10,12], b:[4,2]})) #gives [104,1202][6,10]
+
+#present it on the graph using tensorboard file writer and close the session
+writer = tf.summary.FileWriter('./directory', sess.graph)
+writer.close()
