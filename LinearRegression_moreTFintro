@@ -33,3 +33,23 @@ with tf.Session() as sess:
 #present it on the graph using tensorboard file writer and close the session
 writer = tf.summary.FileWriter('./directory', sess.graph)
 writer.close()
+
+
+#Variables,constants,placeholders,sessions and tensorboards
+import tensorflow as tf
+
+#y = Wx+b
+W = tf.Variable([2.5, 4.0], tf.float32, name='var_W')
+
+x = tf.placeholder(tf.float32, name='x')
+b=tf.Variable([5.0,10.0], tf.float32, name='var_b')
+
+y = W * x + b
+
+#initialize all variables and start session running the initializer also
+init = tf.global_variables_initializer()
+
+with tf.Session() as sess:
+    sess.run(init)
+
+    print("final Result of W*x+b: ", sess.run(y,feed_dict={x:[10,100]})) #gives [30,410]
