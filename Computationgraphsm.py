@@ -34,3 +34,27 @@ exit()
 #now open the file from the terminal using
 # tensorboard --logdir="fileName"
 #open the tensorboard Ip given and navigate to the graphs section on tensorboard to view the computation on the graph
+
+
+#DEFAULT AND EXPLICITLY SPECIFIED GRAPHS
+#by default if tensors are not assigned to a specific graphs they are assigned to default graphs
+import tensorflow as tf
+
+#specify a graph
+g1 = tf.Graph()
+with g1.as_default():
+    with tf.Session as sess:
+        
+        # y = Ax + b
+        A = tf.constant([5,7], tf.int32, name='A')
+        x = tf.placeholder(tf.int32, name='x')
+        b = tf.constant([3,4], tf.int32, name='b')
+        
+        y = A * x + b
+        
+        print(sess.run(y, feed_dict={x:[10,100]}))
+        
+        #get to know if the g1 is the graph on execution
+        assert y.graph is g1
+        
+#instanctiate another second graph 
