@@ -57,4 +57,33 @@ with g1.as_default():
         #get to know if the g1 is the graph on execution
         assert y.graph is g1
         
+        
+        
+#instanctiate another second graph
 #instanctiate another second graph 
+g2 =tf.Graph()
+with g2.as_default():
+    with tf.Session() as sess:
+
+    # equation at hand:
+    # Y = A ^ x
+    A = tf.constant([5,7], tf.int32,name='A')
+    x = tf.placeholder(int32, name='x')
+
+    y = tf.pow(A,x, name='y_power')
+
+    print(sess.run(y, feed_dict={x:[3,5]})
+
+    assert y.graph is g2
+
+#Adding computations to the deafult graph
+default_graph = tf.get_default_graph()
+with tf.Session() as sess:
+    A = tf.constant([5,7], tf.int32,name='A')
+    x = tf.placeholder(int32, name='x')
+
+    y = A + x
+
+    print(sess.run(y, feed_dict={[3,5]}))
+
+    assert y.graph is default_graph
