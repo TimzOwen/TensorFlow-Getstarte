@@ -122,3 +122,33 @@ with tf.Session() as sess:
     
 # Run the above file before running the one below to compute the difference
     
+ #NOW INTRODUCE NAME_SCOPE
+          import tensorflow as tf
+
+#declare constants
+A = tf.constant([4], tf.int32, name='A')
+B = tf.constant([5], tf.int32, name='B')
+C = tf.constant([6], tf.int32, name='C')
+
+x = tf.placeholder(tf.int32, name='x')
+
+# Y = Ax^2 + Bx + C . Equation 1 and introduce the name_scope
+with tf.name_scope("Equation_1"):
+    AX_1 = tf.multiply(A, tf.pow(x,2), name='AX_1')
+    Bx = tf.multiply(B, x, name='Bx')
+    y1 = tf.add_n([AX_1, Bx, C], name='y1')
+
+# Y = Ax^2 + Bx^2 Equation 2
+with tf.name_scope("Equation_2"):
+    AX_2 = tf.multiply(A, tf.pow(x,2), name='AX_2')
+    Bx2 = tf.multiply(B, x, name='Bx')
+    y2 = tf.add_n([AX_2, Bx2], name='y2')
+    
+with tf.name_scope("final_sum"):
+    y = y1 + y2
+
+with tf.Session() as sess:
+    print(sess.run(y, feed_dict={x: [10]}))
+    
+    writer = tf.summary.FileWriter('./file_location', sess.graph)
+    writer.close()
