@@ -36,3 +36,17 @@ Tensorboards symbols and meaning
 
 ![rotation3d](https://user-images.githubusercontent.com/34624703/78398799-62eb0800-75fc-11ea-9b27-8d2fd79b7155.JPG)
 
+# Transposing Images in Tensoflow
+
+![transposing](https://user-images.githubusercontent.com/34624703/80028710-36852600-84ee-11ea-809e-b34717b73c7c.png)
+
+When working with tensorflow, every images has axis and pixel representaion as either 2-D
+
+or 3/4 D . the images are also represented as RGB or the Gray scale and has array of
+
+ex. (6,6,3) and (6,6,1) respectively . The third rep the channel as RGB has three chnnels of 
+
+255-0 and 0 or 1 for the gray scale
+
+![sensorflow](https://user-images.githubusercontent.com/34624703/80028719-384ee980-84ee-11ea-9520-17f675efdf4b.png)
+
