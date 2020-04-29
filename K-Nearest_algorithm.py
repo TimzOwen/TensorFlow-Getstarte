@@ -4,7 +4,10 @@
 #Uses the MNIST Data sets with 60,000 training and 10,000 testing Data sets 
 
 #K-Nearest Algorithm
-#import TF and numpy
+#import TF and numpy\
+
+#STEP 1
+
 import tensorflow as tf
 import numpy as np
 
@@ -21,3 +24,17 @@ testing_digits, teting_labels = mnist.test.next_batch(800)
 # PlaceHolders
 training_digit_pl = tf.placeholder("float",[None,784])
 testing_digit_pl = tf.placeholder("float",784)
+
+
+#STEP 2
+
+#Nearest Neighbor calculation using L1 Distance
+l1_distance = tf.abs(tf.add(training_digit_pl, tf.negative(testing_digit_pl)))
+
+distance = tf.reduce_sum(l1_distance, axis=1)
+
+#prediction: Get minimum distance from the closest neighbor
+pred = tf.arg_min(distance, 0)
+
+
+#STEP 3
