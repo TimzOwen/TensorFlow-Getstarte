@@ -1,4 +1,8 @@
 
+# This is an algorithim used in digits recognition which is a basic factor for 
+# pattern recognition in machine Learning. 
+#Uses the MNIST Data sets with 60,000 training and 10,000 testing Data sets 
+
 #K-Nearest Algorithm
 #import TF and numpy
 import tensorflow as tf
