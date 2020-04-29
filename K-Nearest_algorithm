@@ -1,0 +1,19 @@
+
+#K-Nearest Algorithm
+#import TF and numpy
+import tensorflow as tf
+import numpy as np
+
+# Import MNIST dataset
+from tensorflow.examples.tutorials.mnist import input_data
+
+# store the Data
+mnist = input_data.read_data_sets("mnist_data/",one_hot=true)
+
+# Training and testing
+training_digits, training_labels = mnist.train.next_batch(8000)
+testing_digits, teting_labels = mnist.test.next_batch(800)
+
+# PlaceHolders
+training_digit_pl = tf.placeholder("float",[None,784])
+testing_digit_pl = tf.placeholder("float",784)
