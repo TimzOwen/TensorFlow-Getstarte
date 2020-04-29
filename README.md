@@ -50,3 +50,26 @@ ex. (6,6,3) and (6,6,1) respectively . The third rep the channel as RGB has thre
 
 ![sensorflow](https://user-images.githubusercontent.com/34624703/80028719-384ee980-84ee-11ea-9520-17f675efdf4b.png)
 
+# MNIST with K-Nearest-Algorithim
+
+The Modified Institute of Standards and Technology (MNIST) has over 60,000 Trainig Datasets and
+
+10,000 testing for Digits recognition which is a basic factor for pattern recognition
+
+in machine Learning 
+
+![mnist2](https://user-images.githubusercontent.com/34624703/80641329-5f1c9b00-8a6d-11ea-8b07-17f827b84ba6.png)
+
+K-Nearest Algorithms include the
+
+# supervised and # unsupervised Algorithms 
+
+It also uses Ditances measures to determine the patterns and include
+
+# Euclidean algorithm
+
+# Hamming  algorithm
+
+# Manhattan algorithm
+
+![mnist](https://user-images.githubusercontent.com/34624703/80641332-617ef500-8a6d-11ea-84e3-5415c81b8517.jpg)
