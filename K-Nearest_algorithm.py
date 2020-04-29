@@ -50,6 +50,17 @@ with tf.Session() as sess:
     for i in range(len(testing_digits))
 	nn_index = sess.run(pred, \
      	feed_dict={training_digit_pl:training_digits,testing_digit_pl:testing_digits[i,:]})
+	
+		#Get the nearest class label and compare it to the true value
+		print("Test", i , "Prediction: ",np.argmax(training_labels[nn_index]),\
+        	"True label",np.argmax(test_label[i]))
+
+		#Calculation of accuracy
+		if np.argmax(training_labels[nn_index]) == np.argmax(test_labels[i]):
+			accuracy += 1./len(testing_digits)
+   
+   print("Done Training and Testing")
+   print("Accuracy: ", accuracy)
  
 
 
