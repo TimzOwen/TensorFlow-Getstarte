@@ -38,3 +38,18 @@ pred = tf.arg_min(distance, 0)
 
 
 #STEP 3
+accuracy = 0.
+
+#initialize the variables
+init = tf.global_variables_initializer()
+
+with tf.Session() as sess:
+    sess.run(init)
+    
+    #for loop over test data
+    for i in range(len(testing_digits))
+	nn_index = sess.run(pred, \
+     	feed_dict={training_digit_pl:training_digits,testing_digit_pl:testing_digits[i,:]})
+ 
+
+
