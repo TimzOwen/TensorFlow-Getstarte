@@ -161,3 +161,56 @@ loss = keras.losses.msa(price, predictions)
 
 # Print the mean squared error (mse)
 print(loss.numpy())
+
+
+#Model prediction with nested loss function 
+# Initialize a variable named scalar
+scalar = Variable(1.0,dtype=float32)
+
+# Define the model
+def model(scalar, features = features):
+  	return scalar * features
+
+# Define a loss function
+def loss_function(scalar, features = features, targets = targets):
+	# Compute the predicted values
+	predictions = model(scalar, features)
+    
+	# Return the mean absolute error loss
+	return keras.losses.mae(targets, predictions)
+
+# Evaluate the loss function and print the loss
+print(loss_function(scalar).numpy())
+
+
+#LINEAR REGRESSION
+import tensorflow as tf 
+#house price and house size prediction
+#Define targets and features
+price = np.array(housing['price'], np.float32)
+size = np.array(housing['sqft_living'], np.float32)
+
+#define intercept and slope
+intercept = tf.Variable(0.1, np.float32)
+slope = tf.Variable(0.1, np.float32)
+
+#define a linear regression model
+def linear_regression(intercept, slope, feature=size):
+    return intercept + feature*slope
+
+#compute the predicted values loss
+def loss_function(intercept, slope, targets=price, feature=size):
+    prediction = linear_regression(intercept, slope)
+    return tf.keras.mse(targets, prediction)
+#define an optimizer to reduce loss
+opt = tf.keras.optimizers.Adam()
+
+#minimize the loss function and print the optimizer
+for j in range(1000):
+    opt.minimize(lambda: loss_function(intercept,slope))
+    var_list=[intercept,slope]
+    print(loss_function(intercept,slope))
+    
+# print the trained parameters
+print(intercept.numpy(), slope.numpy())
+
