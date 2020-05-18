@@ -478,3 +478,85 @@ print('\n shape of predictions: ', predictions.shape)
 
 
 #ACTIVATION FUNCTION ON LINEAR AND NON-LINEAR STATES
+#ACTIVATION FUNCTION ON LINEAR AND NON-LINEAR STATES
+#activation on non-linearity
+import tensorflow as tf
+import numpy as np
+
+#define example borrow feature
+young, old = 0.3 ,0.6
+low_bill, high_bill = 0.1, 0.5
+
+#apply matrix multiplication for all the features
+young_high = 1.0*young + 2.0 * highbill
+young_low = 1.0*young + 2.0 * low_bill
+old_high = 1.0*old + 2.0 * highbill
+old_low = 1.0*young + 2.0 * low_bill
+
+#Difference in default prediction for young
+print(young_hight - young-low)
+#difference in prediction for the old
+print(old_high - old_low)
+
+#SIGMOID ACTIVATION FUNCTION
+#difference in default prediction for young
+print(tf.keras.activations.sigmoid(young_high).numpy() -
+    tf.keras.activations.sigmoid(young_low).numpy())
+#difference for the old
+print(tf.keras.activations.sigmoid(old_high).numpy() -
+    tf.keras.activations.sigmoid(old_low).numpy())
+    
+    
+#summary  of activation functions
+import tensorfloe as tf
+
+#Define input layers
+inputs = tf.constant(borrow_features, tf.float32)
+
+#define dense layer 1
+dense1 = tf.keras.layers.Dense(16, activation='relu')(inputs)
+
+#define dense 2
+ dense2 = tf.keras.layers.Dense(8, activation='sigmoid')(inputs)
+ 
+ #define layer 3
+ output = tf.keras.layers.Dense(4, activation= 'softmax')(inputs)
+
+ #ACTIVATION 002
+# Construct input layer from features
+inputs = constant(bill_amounts, float32)
+
+# Define first dense layer
+dense1 = keras.layers.Dense(3, activation='relu')(inputs)
+
+# Define second dense layer
+dense2 = keras.layers.Dense(2, activation='relu')(dense1)
+
+# Define output layer
+outputs = keras.layers.Dense(1, activation='sigmoid')(dense2)
+
+# Print error for first five examples
+error = default[:5] - outputs.numpy()[:5]
+print(error)
+
+# Construct input layer from borrower features
+inputs = constant(borrower_features, float32)
+
+# Define first dense layer
+dense1 = keras.layers.Dense(10, activation='sigmoid')(inputs)
+
+# Define second dense layer
+dense2 = keras.layers.Dense(8, activation='relu')(dense1)
+
+# Define output layer
+outputs = keras.layers.Dense(6, activation='softmax')(dense2)
+
+# Print first five predictions
+print(outputs.numpy()[:5])
+
+#output
+[[0.27273858 0.22793978 0.14991151 0.20651649 0.07163708 0.0712566 ]
+ [0.18890299 0.22651453 0.17812535 0.14867578 0.15733427 0.10044706]
+ [0.17524226 0.20379762 0.20934258 0.1681514  0.1354533  0.10801287]
+ [0.27273858 0.22793978 0.14991151 0.20651649 0.07163708 0.0712566 ]
+ [0.27273858 0.22793978 0.14991151 0.20651649 0.07163708 0.0712566 ]]
