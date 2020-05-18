@@ -292,3 +292,54 @@ loss: 12.297, intercept: 0.110, slope_1: 0.060, slope_2: 0.030
     loss: 12.324, intercept: 0.108, slope_1: 0.058, slope_2: 0.028
     loss: 12.311, intercept: 0.109, slope_1: 0.059, slope_2: 0.029
     loss: 12.297, intercept: 0.110, slope_1: 0.060, slope_2: 0.030
+
+
+				
+#BATCH TRAINING 
+#splitting data into smaller groups-batches (epoch) to enable
+#training on small gadgets such as GPU . 
+import pandas as pd
+import numpy as np
+
+#load data in batches
+for batch in pd.read_csv('kc_housing.csv',chunksize=100):
+    #Extract price column
+    price = np.array(batch['price'],np.float32)
+    #extract size column
+    size = np.array(batch['size'],np.float32)
+
+
+#TRAINING a linear model in batches
+import tensorflow as tf
+import numpy as np
+import pandas as pd
+
+#define trainable variables
+intercept = tf.Variable(0.1, tf.float32)
+slope = tf.Variable(0.1, tf.float32)
+
+#define the model
+def linear_regression(intercept, slope,features):
+    return intercept + features*slope
+
+#compute predicted values and return loss function
+def loss_function(intercept, slope, targets, features):
+    prediction = linear_regression(intercept, slope, features)
+    return tf.keras.losses.mse(targets, prediction)
+
+#define  optimizations operation
+opt = tf.keras.optimizers.Adam()
+
+#Train the model in batches
+#load in batches 
+for batch in pd.read_csv('kc_housing.csv', chunksize=100):
+    #extract features and target columns
+    price_batch = np.array(batch['price'], np.float32)
+    size_batch = np.array(batch['lot_size'], np.float32)
+    
+    #minimize the loss function
+    opt.minimize(lambda: loss_function(intercept, slope, price_batch, size_batch),
+    var_list=[intercept, slope])
+    
+#print the parameter values
+print(intercept.numpy(), slope.numpy())
