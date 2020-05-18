@@ -560,3 +560,63 @@ print(outputs.numpy()[:5])
  [0.17524226 0.20379762 0.20934258 0.1681514  0.1354533  0.10801287]
  [0.27273858 0.22793978 0.14991151 0.20651649 0.07163708 0.0712566 ]
  [0.27273858 0.22793978 0.14991151 0.20651649 0.07163708 0.0712566 ]]
+
+
+
+ 
+#OPTIMIZERS
+#1. GRADIENT DESCENT OPT
+#2. ADAM OPT
+#3. RMS OPT
+
+
+import tensorflow as tf
+#define the model functions 
+def model(bias, weights,features=borrower_features):
+    product = tf.matmul(features, weights)
+    return tf.keras.activations.sigmoid(product + bias)
+
+#compute predicted values and loss
+def loss_function(bias, weights, target=default, features=borrower_features):
+    prediction=(model, weights)
+    return tf.keras.losses.binary_crossentropy(target,predictions)
+    
+#minimize the loss with RMS propagation
+opt = tf.keras.optimizers.RMSprop(learning_rate=0.01, momentum=0.9)
+opt.minimize(lambda: loss_function(bias, weights),var_list=[bias,weights])
+
+# Initialize x_1 and x_2
+x_1 = Variable(6.0,float32)
+x_2 = Variable(0.3,float32)
+
+# Define the optimization operation
+opt = keras.optimizers.SGD(learning_rate=0.01)
+
+for j in range(100):
+	# Perform minimization using the loss function and x_1
+	opt.minimize(lambda: loss_function(x_1), var_list=[x_1])
+	# Perform minimization using the loss function and x_2
+	opt.minimize(lambda: loss_function(x_2), var_list=[x_2])
+
+# Print x_1 and x_2 as numpy arrays
+print(x_1.numpy(), x_2.numpy())
+
+# Initialize x_1 and x_2
+x_1 = Variable(0.05,float32)
+x_2 = Variable(0.05,float32)
+
+# Define the optimization operation for opt_1 and opt_2
+opt_1 = keras.optimizers.RMSprop(learning_rate=0.01, momentum=0.99)
+opt_2 = keras.optimizers.RMSprop(learning_rate=0.01, momentum=0.00)
+
+for j in range(100):
+	opt_1.minimize(lambda: loss_function(x_1), var_list=[x_1])
+    # Define the minimization operation for opt_2
+	opt_2.minimize(lambda: loss_function(x_2), var_list=[x_2])
+
+# Print x_1 and x_2 as numpy arrays
+print(x_1.numpy(), x_2.numpy())
+
+
+
+TRAINING A NETWORK IN TENSORFLOW
