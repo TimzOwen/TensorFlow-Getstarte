@@ -93,3 +93,23 @@ output = matmul(letter, model)
 # Sum over output and print prediction using the numpy method
 prediction = reduce_sum(output)
 print(prediction.numpy())
+
+#Reading Datasets 
+# Import pandas under the alias pd
+import pandas as pd
+
+# Assign the path to a string variable named data_path
+data_path = 'kc_house_data.csv'
+
+# Load the dataset as a dataframe named housing
+housing = pd.read_csv(data_path)
+
+# Print the price column of housing
+print(housing['price'])
+
+    21608     360000.0
+    21609     400000.0
+    21610     402101.0
+    21611     400000.0
+    21612     325000.0
+    Name: price, Length: 21613, dtype: float64
