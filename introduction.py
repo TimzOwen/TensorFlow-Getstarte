@@ -113,3 +113,51 @@ print(housing['price'])
     21611     400000.0
     21612     325000.0
     Name: price, Length: 21613, dtype: float64
+			
+# Import numpy and tensorflow with their standard aliases
+import tensorflow as tf
+import numpy as np
+
+# Use a numpy array to define price as a 32-bit float
+price = np.array(housing['price'], np.int32)
+
+# Define waterfront as a Boolean using cast
+waterfront = tf.cast(housing['waterfront'], tf.bool)
+
+# Print price and waterfront
+print(price)
+print(waterfront)
+
+
+#LOSS FUNCTIONS
+#define linear Regression Model
+def linear_regression(intercept, slope=slope, features=features):
+    return intercept + features*slope
+
+#define a loss function to compute MSE
+def loss-fucntion(intercept, slope, target=target, features=features):
+    #compute prediction of a linear Model
+    prediction = leanear_regression(intercept, slope)
+    
+    #return loss
+    return tf.keras.losses.mse(target, prediction)
+
+#code to compute House price using MSE
+# Import the keras module from tensorflow
+from tensorflow import keras
+
+# Compute the mean squared error (mse)
+loss = keras.losses.mse(price, predictions)
+
+# Print the mean squared error (mse)
+print(loss.numpy())
+
+#house price using Mae
+# Import the keras module from tensorflow
+from tensorflow import keras
+
+# Compute the mean squared error (mse)
+loss = keras.losses.msa(price, predictions)
+
+# Print the mean squared error (mse)
+print(loss.numpy())
