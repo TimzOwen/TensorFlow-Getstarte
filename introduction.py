@@ -885,3 +885,66 @@ Total params: 6,280
 Trainable params: 6,280
 Non-trainable params: 0
 ________________________
+
+
+# sample2
+# For model 1, pass the input layer to layer 1 and layer 1 to layer 2
+m1_layer1 = keras.layers.Dense(12, activation='sigmoid')(m1_inputs)
+m1_layer2 = keras.layers.Dense(4, activation='softmax')(m1_layer1)
+
+# For model 2, pass the input layer to layer 1 and layer 1 to layer 2
+m2_layer1 = keras.layers.Dense(12, activation='relu')(m2_inputs)
+m2_layer2 = keras.layers.Dense(4, activation='softmax')(m2_layer1)
+
+# Merge model outputs and define a functional model
+merged = keras.layers.add([m1_layer2, m2_layer2])
+model = keras.Model(inputs=[m1_inputs, m2_inputs], outputs=merged)
+
+# Print a model summary
+print(model.summary())
+
+
+#TRAINING AND EVALUATING A MODEL 
+
+#how to train a model
+import tensorflow as tf
+
+#define sequential model
+model = tf.keras.Sequential()
+
+#define hidden layer
+model.add(tf.keras.layers.Dense(16,activation='relu', input_shape=(784)))
+
+#def output layer
+model.add(tf.keras.layers.Dense(4, activation='softmax'))
+
+#compile the model
+model.compile('adam', loss='categorical_crossentropy')
+
+#Training the model
+model.fit(image_features, image_labels)
+
+
+#Training a model with validation()Data split into training and testing datasets
+model.fit(features, labels, epoch=10, validation_split=0.20)
+
+#changing the metric
+#recompile the model with accuracy metric
+model.compile('adam', loss='categorical_crossentropy', metrics=['accuracy'])
+#train the model with validation split
+model.fit(features, labels, epochs=10, validation_split=0.20)
+
+
+#The Evaluation() operation
+#evaluates the test set
+
+
+
+# Training with Keras
+
+# In this exercise, we return to our sign language
+#  letter classification problem. We have 2000 images
+#  of four letters--A, B, C, and D--and we want to classify
+#  them with a high level of accuracy.
+#  We will complete all parts of the problem, including the
+#  model definition, compilation, and training.
