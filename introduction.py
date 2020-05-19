@@ -2287,4 +2287,52 @@ print('Large - Train: {}, Test: {}'.format(large_train, large_test))
 
  Small - Train: 0.3339744055271149, Test: 0.4521311902999878
 Large - Train: 0.03536653757095337, Test: 0.16508901357650757
+		
+
+#ESTIMATOR API
+
+#Model specification and Training using estimator API
+
+#1.0 define feature columns
+import tensorflow as tf
+
+#define numeric feature column
+size = tf.feature_column.numeric_column("size")
+
+#Define a categorical feature column
+rooms = tf.feature_column.categorical_column_with_vocabulary_list("rooms",\
+    ["1","2","3","4","5"])
+
+#create feature column list merge
+features_list = [size,rooms]
+
+#Define Matrix feature column
+features_list = [tf.feature_column.numeric_column('image', shape=(784,))]
+
+#Loading and transforming Data
+#def input data
+def input_fn():
+    #define feature dictionary
+    features = {"size": [1340,1690,2720], "rooms":{1,2,3,4]}
+    #define labels
+    labels = [221000, 538000,180000]
+    return features, lables
+
+#define and train a regression estimator(DeepNeuralNetwork)
+model0 = tf.estimator.DNNRegressor(feature_columns=feature_list,\
+    hidden_units=[10,6,6,3])
+
+#Train the Regression Model
+model0.train(input_fn, steps=20)
+
+#OR an alternative(Define and train a deep neural network)
+#def a deep neural network classifier
+model1 =tf.estimator.DNNClassifier(feature_columns=feature_list,\
+    hidden_units=[32,16,8], n_classes=4)
+
+#Train the classifier
+model1.train(input_fn, steps=20)
+
+		
+		
 
