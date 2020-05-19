@@ -619,4 +619,63 @@ print(x_1.numpy(), x_2.numpy())
 
 
 
-TRAINING A NETWORK IN TENSORFLOW
+
+# Print x_1 and x_2 as numpy arrays
+print(x_1.numpy(), x_2.numpy())
+
+# Initialize x_1 and x_2
+x_1 = Variable(0.05,float32)
+x_2 = Variable(0.05,float32)
+
+# Define the optimization operation for opt_1 and opt_2
+opt_1 = keras.optimizers.RMSprop(learning_rate=0.01, momentum=0.99)
+opt_2 = keras.optimizers.RMSprop(learning_rate=0.01, momentum=0.00)
+
+for j in range(100):
+	opt_1.minimize(lambda: loss_function(x_1), var_list=[x_1])
+    # Define the minimization operation for opt_2
+	opt_2.minimize(lambda: loss_function(x_2), var_list=[x_2])
+
+# Print x_1 and x_2 as numpy arrays
+print(x_1.numpy(), x_2.numpy())
+
+
+
+#VARIABLE INITIALIZATION & Model Training overfitting
+#low level
+
+#define a random normal variable
+weights = tf.Variable(tf.random.normal([500, 500]))
+
+#truncated normal
+weights = tf.Variable(tf.random.truncated_normal([500,500]))
+
+#high-level
+#define a dense layer with default initializer
+dense = tf.keras.layers.Dense(32, activation='relu')
+
+#dense with zeros initializer
+dense = tf.keras.layers.Dense(32, activation='relu',kernel_initializer='zeros')
+
+#OVERFITTING  a neural model
+#solved using drop layouts
+
+import tensorflow as tf
+import numpy as np
+
+#define input data
+inputs = np.array(browser_features, np.float32)
+
+#create dense layer
+dense1 = tf.keras.layers.Dense(32, activatino='relu')(inputs)
+
+#dense 2
+dense2 = tf.keras.layers.Dense(16, activation='relu')(dense1)
+
+#pass in the drop layouts
+dropout1 = tf.keras.layers.Dropout(0.25)(dense2)
+
+#define the outputs
+outputs = tf.keras.layers.Dense(1, activation='sigmoid') (dropout1)
+
+
