@@ -948,3 +948,141 @@ model.fit(features, labels, epochs=10, validation_split=0.20)
 #  them with a high level of accuracy.
 #  We will complete all parts of the problem, including the
 #  model definition, compilation, and training.
+
+
+# Define a sequential model
+model = keras.Sequential()
+
+# Define a hidden layer
+model.add(keras.layers.Dense(16, activation='relu', input_shape=(784,)))
+
+# Define the output layer
+model.add(keras.layers.Dense(4, activation='softmax'))
+
+# Compile the model
+model.compile('SGD', loss='categorical_crossentropy')
+
+# Complete the fitting operation
+model.fit(sign_language_features, sign_language_labels, epochs=5)
+
+#output
+Train on 1000 samples
+    Epoch 1/5
+    
+  32/1000 [..............................] - ETA: 16s - loss: 1.6624
+ 544/1000 [===============>..............] - ETA: 0s - loss: 1.4221 
+1000/1000 [==============================] - 1s 631us/sample - loss: 1.3699
+    Epoch 2/5
+    
+  32/1000 [..............................] - ETA: 0s - loss: 1.2227
+ 672/1000 [===================>..........] - ETA: 0s - loss: 1.2258
+1000/1000 [==============================] - 0s 81us/sample - loss: 1.2104
+    Epoch 3/5
+    
+  32/1000 [..............................] - ETA: 0s - loss: 1.2658
+ 672/1000 [===================>..........] - ETA: 0s - loss: 1.0857
+1000/1000 [==============================] - 0s 84us/sample - loss: 1.0668
+    Epoch 4/5
+    
+  32/1000 [..............................] - ETA: 0s - loss: 0.9158
+ 640/1000 [==================>...........] - ETA: 0s - loss: 0.9240
+1000/1000 [==============================] - 0s 89us/sample - loss: 0.9047
+    Epoch 5/5
+    
+  32/1000 [..............................] - ETA: 0s - loss: 0.8375
+ 736/1000 [=====================>........] - ETA: 0s - loss: 0.7907
+1000/1000 [==============================] - 0s 74us/sample - loss: 0.7763
+
+
+#Metrics and Validation with Keras
+# Define sequential model
+model = keras.Sequential()
+
+# Define the first layer
+model.add(keras.layers.Dense(32, activation='sigmoid', input_shape=(784,)))
+
+# Add activation function to classifier
+model.add(keras.layers.Dense(4, activation='softmax'))
+
+# Set the optimizer, loss function, and metrics
+model.compile(optimizer='RMSprop', loss='categorical_crossentropy', metrics=['accuracy'])
+
+# Add the number of epochs and the validation split
+model.fit(sign_language_features, sign_language_labels, epochs=10, validation_split=0.10)
+
+#output 
+Epoch 1/10
+
+  32/1799 [..............................] - ETA: 39s - loss: 1.6457 - accuracy: 0.2500
+ 544/1799 [========>.....................] - ETA: 1s - loss: 1.3519 - accuracy: 0.3934 
+ 992/1799 [===============>..............] - ETA: 0s - loss: 1.2703 - accuracy: 0.4456
+1536/1799 [========================>.....] - ETA: 0s - loss: 1.1882 - accuracy: 0.5143
+1799/1799 [==============================] - 1s 641us/sample - loss: 1.1563 - accuracy: 0.5442 - val_loss: 1.0239 - val_accuracy: 0.5050
+Epoch 2/10
+
+  32/1799 [..............................] - ETA: 0s - loss: 1.0696 - accuracy: 0.5312
+ 480/1799 [=======>......................] - ETA: 0s - loss: 0.8834 - accuracy: 0.8313
+ 960/1799 [===============>..............] - ETA: 0s - loss: 0.8540 - accuracy: 0.7958
+1376/1799 [=====================>........] - ETA: 0s - loss: 0.8317 - accuracy: 0.7914
+1760/1799 [============================>.] - ETA: 0s - loss: 0.8097 - accuracy: 0.7937
+1799/1799 [==============================] - 0s 139us/sample - loss: 0.8082 - accuracy: 0.7927 - val_loss: 0.6956 - val_accuracy: 0.8150
+Epoch 3/10
+
+  32/1799 [..............................] - ETA: 0s - loss: 0.7409 - accuracy: 0.8438
+ 480/1799 [=======>......................] - ETA: 0s - loss: 0.6833 - accuracy: 0.8375
+ 768/1799 [===========>..................] - ETA: 0s - loss: 0.6714 - accuracy: 0.8398
+1152/1799 [==================>...........] - ETA: 0s - loss: 0.6469 - accuracy: 0.8481
+1632/1799 [==========================>...] - ETA: 0s - loss: 0.6173 - accuracy: 0.8627
+1799/1799 [==============================] - 0s 161us/sample - loss: 0.6119 - accuracy: 0.8660 - val_loss: 0.5418 - val_accuracy: 0.8950
+Epoch 4/10
+
+  32/1799 [..............................] - ETA: 0s - loss: 0.5651 - accuracy: 0.8125
+ 544/1799 [========>.....................] - ETA: 0s - loss: 0.5195 - accuracy: 0.8879
+1056/1799 [================>.............] - ETA: 0s - loss: 0.5006 - accuracy: 0.8949
+1536/1799 [========================>.....] - ETA: 0s - loss: 0.4805 - accuracy: 0.9062
+1799/1799 [==============================] - 0s 149us/sample - loss: 0.4672 - accuracy: 0.9066 - val_loss: 0.4829 - val_accuracy: 0.8250
+Epoch 5/10
+
+  32/1799 [..............................] - ETA: 0s - loss: 0.4154 - accuracy: 0.8438
+ 448/1799 [======>.......................] - ETA: 0s - loss: 0.4048 - accuracy: 0.9397
+ 928/1799 [==============>...............] - ETA: 0s - loss: 0.3884 - accuracy: 0.9440
+1472/1799 [=======================>......] - ETA: 0s - loss: 0.3739 - accuracy: 0.9450
+1799/1799 [==============================] - 0s 117us/sample - loss: 0.3682 - accuracy: 0.9439 - val_loss: 0.4221 - val_accuracy: 0.9250
+Epoch 6/10
+
+  32/1799 [..............................] - ETA: 0s - loss: 0.3541 - accuracy: 0.9375
+ 704/1799 [==========>...................] - ETA: 0s - loss: 0.3202 - accuracy: 0.9545
+1344/1799 [=====================>........] - ETA: 0s - loss: 0.3009 - accuracy: 0.9635
+1799/1799 [==============================] - 0s 91us/sample - loss: 0.2919 - accuracy: 0.9622 - val_loss: 0.3764 - val_accuracy: 0.7850
+Epoch 7/10
+
+  32/1799 [..............................] - ETA: 0s - loss: 0.3175 - accuracy: 0.8438
+ 704/1799 [==========>...................] - ETA: 0s - loss: 0.2567 - accuracy: 0.9645
+1376/1799 [=====================>........] - ETA: 0s - loss: 0.2394 - accuracy: 0.9738
+1799/1799 [==============================] - 0s 89us/sample - loss: 0.2399 - accuracy: 0.9689 - val_loss: 0.2169 - val_accuracy: 0.9650
+Epoch 8/10
+
+  32/1799 [..............................] - ETA: 0s - loss: 0.2129 - accuracy: 1.0000
+ 576/1799 [========>.....................] - ETA: 0s - loss: 0.2006 - accuracy: 0.9757
+1088/1799 [=================>............] - ETA: 0s - loss: 0.2019 - accuracy: 0.9715
+1664/1799 [==========================>...] - ETA: 0s - loss: 0.1930 - accuracy: 0.9754
+1799/1799 [==============================] - 0s 109us/sample - loss: 0.1911 - accuracy: 0.9767 - val_loss: 0.2745 - val_accuracy: 0.9050
+Epoch 9/10
+
+  32/1799 [..............................] - ETA: 0s - loss: 0.2252 - accuracy: 0.9062
+ 576/1799 [========>.....................] - ETA: 0s - loss: 0.1925 - accuracy: 0.9653
+1216/1799 [===================>..........] - ETA: 0s - loss: 0.1710 - accuracy: 0.9794
+1792/1799 [============================>.] - ETA: 0s - loss: 0.1583 - accuracy: 0.9827
+1799/1799 [==============================] - 0s 106us/sample - loss: 0.1582 - accuracy: 0.9828 - val_loss: 0.2293 - val_accuracy: 0.9150
+Epoch 10/10
+
+  32/1799 [..............................] - ETA: 0s - loss: 0.2478 - accuracy: 0.8438
+ 480/1799 [=======>......................] - ETA: 0s - loss: 0.1520 - accuracy: 0.9646
+ 896/1799 [=============>................] - ETA: 0s - loss: 0.1495 - accuracy: 0.9676
+1376/1799 [=====================>........] - ETA: 0s - loss: 0.1447 - accuracy: 0.9731
+1799/1799 [==============================] - 0s 127us/sample - loss: 0.1381 - accuracy: 0.9772 - val_loss: 0.1356 - val_accuracy: 0.9700
+
+
+
+#OVERFITTING DETECTION
+
