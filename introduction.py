@@ -728,4 +728,57 @@ confusion_matrix(test_targets, model_predictions)
 
 #TRAINING AND CLASSIFYING  SIGN LANGUAGE NEURAL NETWORKS
 
+#build a sequential model
+from tensorflow import keras
+
+#define a sequential model
+model = keras.sequential()
+
+#define first hidden layer
+model.add(keras.layers.Dense(16, activation='relu', input_shape=(28*28,)))
+
+#second hidden layer
+model.add(keras.layers.Dense(8, activation='relu'))
+
+#output layer definition
+model.add(keras.layers.Dense(4, activation='softmax'))
+
+#model compilations
+model.compile('adam',loss='categorical_crossentropy')
+
+#summarize model
+print(model.summary())
+
+
+
+#FUNCTIONAL API
+#allows training of separate models jointly
+import tensorflow as tf
+
+#define model1 
+model1_inputs = tf.keras.input(shape=(28*28,))
+
+#def model 2 inputs layers
+model2_inputs = tf.keras.input(shape=(10,))
+
+#define layer 1 for model 1
+model1_layer1 = tf.keras.layers.Dense(12, activation='relu')(model1_inputs)
+
+#def layer2 model 1
+model1_layer2 = tf.keras.layers.Dense(4,activation='softmax')(model1_layer1)
+
+#def layer1 model 2
+model2_layer1 = tf.keras.layers.Dense(8, activation='relu')(model2_inputs)
+
+#def layer2 model 2 
+model2_layer2 = tf.keras.layers.Dense(4, activation='softmax')(model2_layer1)
+
+#merge model 1 and 2 
+merged  = tf.keras.layers.add([model1_layer2, model2_layer2])
+
+#def functional model
+model = tf.keras.Model(inputs=[model1_inputs, model2_inputs], outputs=merged)
+
+#compile the model
+model.compile('adam',loss='categorical_crossentropy')
 
