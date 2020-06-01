@@ -5,7 +5,7 @@
 
 #K-Nearest Algorithm
 #import TF and numpy\
-
+#TODO, create more simple exp
 #STEP 1
 
 import tensorflow as tf
