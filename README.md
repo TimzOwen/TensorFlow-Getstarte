@@ -29,14 +29,14 @@ Transposed image using Tensorflow Transpose parameters
 
 Tensorboards symbols and meaning 
 
-# scope and naming 
+## scope and naming 
 ![scope](https://user-images.githubusercontent.com/34624703/78213835-6f684700-74bc-11ea-94f1-277bc57b5108.JPG)
 
-# perfoming manipulations on 3D objects with Tf
+## perfoming manipulations on 3D objects with Tf
 
 ![rotation3d](https://user-images.githubusercontent.com/34624703/78398799-62eb0800-75fc-11ea-9b27-8d2fd79b7155.JPG)
 
-# Transposing Images in Tensoflow
+## Transposing Images in Tensoflow
 
 ![transposing](https://user-images.githubusercontent.com/34624703/80028710-36852600-84ee-11ea-809e-b34717b73c7c.png)
 
@@ -64,12 +64,17 @@ K-Nearest Algorithms include the
 
 # supervised and # unsupervised Algorithms 
 
-It also uses Ditances measures to determine the patterns and include
+It also uses Ditances measures to determine the patterns and include. This include identifiying the closest neighbor
 
-# Euclidean algorithm
+![knear](https://user-images.githubusercontent.com/34624703/85834722-8a391780-b79c-11ea-81e1-ad0504294f08.png)
 
-# Hamming  algorithm
+![knearest](https://user-images.githubusercontent.com/34624703/85834726-8b6a4480-b79c-11ea-96c5-b716bea02dc1.png)
 
-# Manhattan algorithm
+
+## Euclidean algorithm
+
+## Hamming  algorithm
+
+## Manhattan algorithm
 
 ![mnist](https://user-images.githubusercontent.com/34624703/80641332-617ef500-8a6d-11ea-84e3-5415c81b8517.jpg)
