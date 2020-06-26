@@ -66,7 +66,7 @@ K-Nearest Algorithms include the
 
 It also uses Ditances measures to determine the patterns and include. This include identifiying the closest neighbor
 
-![knear](https://user-images.githubusercontent.com/34624703/85834722-8a391780-b79c-11ea-81e1-ad0504294f08.png)
+![knew](https://user-images.githubusercontent.com/34624703/85835111-2a8f3c00-b79d-11ea-9fb1-5be4af516a07.JPG)
 
 ![knearest](https://user-images.githubusercontent.com/34624703/85834726-8b6a4480-b79c-11ea-96c5-b716bea02dc1.png)
 
